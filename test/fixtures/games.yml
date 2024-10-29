@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  num_players: 1
+  num_ratings: 1
+  avg_rating: 1.5
+  image: MyString
+
+two:
+  name: MyString
+  description: MyText
+  num_players: 1
+  num_ratings: 1
+  avg_rating: 1.5
+  image: MyString
