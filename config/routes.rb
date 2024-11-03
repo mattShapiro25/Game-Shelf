@@ -11,4 +11,30 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  #Users
+  # devise_for :users
+  
+  # # This line will generate all the RESTful routes for the UsersController
+  # resources :users, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+  
+  # # Define the root path route ("/")
+  # devise_scope :user do
+  #   root to: "devise/sessions#new"
+  # end
+
+  devise_for :users
+
+  
+  devise_scope :user do
+    authenticated :user do
+      root to: "users#index", as: :authenticated_root
+    end
+
+    unauthenticated do
+      root to: "devise/sessions#new", as: :unauthenticated_root
+
+    end
+  end
+
 end
