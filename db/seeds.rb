@@ -7,3 +7,10 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+###### USERS ######
+User.create!(email: 'admin@colgate.edu', password: 'colgate13')
+User.create!(email: 'mod@colgate.edu', password: 'colgate13')
+User.create!(email: 'user@colgate.edu', password: 'colgate13')
+
+###### MOIVES ######
