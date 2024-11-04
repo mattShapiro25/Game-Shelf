@@ -43,6 +43,13 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
+
+  # More testing stuff
+  gem 'simplecov', require: false
+  gem 'rspec'
+  gem 'rspec-rails', '~> 7.0.0'
+  gem 'capybara'
+  
 end
 
 group :development do
@@ -52,8 +59,10 @@ end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
-  gem "capybara"
   gem "selenium-webdriver"
+  gem 'cucumber-rails', require: false
+  # database_cleaner is not required, but highly recommended
+  gem 'database_cleaner'
 end
 
 gem "devise", "~> 4.9"

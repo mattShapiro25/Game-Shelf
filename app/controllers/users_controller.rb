@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
   def index
     
@@ -26,5 +27,10 @@ class UsersController < ApplicationController
 
   def update
 
+  end
+
+  def record_not_found
+    flash[:alert] = "Invalid user."
+    redirect_to authenticated_root_path # temporary location
   end
 end
