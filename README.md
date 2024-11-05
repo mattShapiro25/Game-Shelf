@@ -10,10 +10,16 @@ GameShelf is a video game ranking system that allows users to create accounts, m
 run the following commands to view
 ```bash
 $ bundle config without production
+```
+```bash
 $ bundle install
+```
+```bash
 $ rails db:migrate
+```
+```bash
 $ rails db:seed
-
+```
 
 ## Features
 - User account creation and authentication
