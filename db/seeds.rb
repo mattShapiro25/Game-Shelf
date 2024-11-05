@@ -20,3 +20,9 @@ games.each do |game_data|
     updated_at: game_data['updated_at'] || Time.now
   )
 end
+
+###### USERS ######
+# User.create!(email: 'admin@colgate.edu', password: 'colgate13')
+# User.create!(email: 'mod@colgate.edu', password: 'colgate13')
+# User.create!(email: 'user@colgate.edu', password: 'colgate13')
+
