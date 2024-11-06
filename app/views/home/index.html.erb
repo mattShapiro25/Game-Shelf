@@ -10,3 +10,8 @@
   <p> You are signed in as: <%= current_user.email %> </p>
   </div>
 </div>
+
+<h2> These are the most popular games: </h2>
+<% @games.each do |game|%>
+  <p>Game: <%= game.name %> </p>
+<% end %>
