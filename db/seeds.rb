@@ -3,26 +3,27 @@
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 require 'json'
 
-file_path = Rails.root.join('db', 'seeds', 'games.json')
-data = JSON.parse(File.read(file_path))
+file_path = Rails.root.join('db', 'seeds', 'games_data.json')
+games = JSON.parse(File.read(file_path))
 
-games = data['results']  # Access the "results" array
-
-games.each do |game_data|
+games.each do |game|
   Game.create!(
-    name: game_data['name'] || 'Unknown Name',
-    description: game_data['description'] || 'No description provided',
-    num_players: game_data.dig('added_by_status', 'playing').to_i + game_data.dig('added_by_status', 'toplay').to_i || 0,
-    num_ratings: game_data['ratings_count'] || 0,
-    avg_rating: game_data['rating'] || 0.0,
-    image: game_data['background_image'] || 'default_image.png',
-    created_at: game_data['created_at'] || Time.now,
-    updated_at: game_data['updated_at'] || Time.now
+    name: game['name'],
+    description: game['description'],
+    num_players: game['num_players'],
+    num_ratings: game['num_ratings'],
+    avg_rating: game['avg_rating'],
+    image: game['image'],
+    created_at: Time.now,
+    updated_at: Time.now
   )
 end
 
-###### USERS ######
-# User.create!(email: 'admin@colgate.edu', password: 'colgate13')
-# User.create!(email: 'mod@colgate.edu', password: 'colgate13')
-# User.create!(email: 'user@colgate.edu', password: 'colgate13')
-
+# Seed sample User
+User.create!(
+  username: 'testuser',
+  email: 'testuser@example.com',
+  password: 'password123',
+  password_confirmation: 'password123',
+  number_of_ratings: 0
+)
