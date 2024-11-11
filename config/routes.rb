@@ -18,4 +18,7 @@ Rails.application.routes.draw do
   end
 
   resources :home
+  resources :games, only: [:index, :show]
+  resources :users, only: [:show]
+  get 'users/:id/friends', to: 'users#friends', as: 'friends'
 end

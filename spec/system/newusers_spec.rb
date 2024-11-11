@@ -11,7 +11,7 @@ RSpec.describe "Newusers", type: :system do
       click_on 'Sign up'
       expect(page).to have_content('Password (6 characters minimum)') # currently only distinguishable text on page
       signup_via_form("test@colgate.edu", "password123", "password123")
-      expect(page).to have_content('You are currently signed in as')  # if signed in
+      expect(page).to have_content('Welcome')  # if signed in
     end
   end
 

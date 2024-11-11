@@ -1,32 +1,14 @@
 class UsersController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
-  def index
-    
-  end
-
   def show
-
+    @user = User.find(params[:id])
   end
 
-  def new
-
-  end
-
-  def create
-
-  end
-
-  def destroy
-
-  end
-
-  def edit
-
-  end
-
-  def update
-
+  def friends
+    @user = User.find(params[:id])
+    @friends = User.all #TODO REPLACE
+    # @friends = @user.friends # This will be fixed later
   end
 
   def record_not_found

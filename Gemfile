@@ -73,3 +73,6 @@ gem "omniauth-rails_csrf_protection", "~> 1.0"
 
 # Use for accessing the API_KEY
 gem 'dotenv-rails'
+
+gem "tailwindcss-rails"
+gem 'factory_bot_rails'

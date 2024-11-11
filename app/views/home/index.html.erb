@@ -1,17 +1,54 @@
-<div class="container">
-  <div class="row">
-    <h1>This is the home page right after sign in</h1>
-  </div>
+<head>
+  <title>Home Page</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag 'application', 'home', media: 'all' %>
+</head>
+<body>
+
+  <header class="header">
+    <div class="logo">Logo</div>
+    <div class="profile-icon"><%= current_user.email[0].upcase %></div>
+  </header>
+  <main class="content">
+  <h1 class="welcome-text">Welcome <%= current_user.email.split('@').first %></h1>
+  <h2 class="section-heading">Popular Games</h2>
+    <section class="games">
+      <% @games.each do |game| %>
+        <a href="<%= game_path(game) %>" class="game-card">
+          <img src="<%= game.image %>" alt="<%= game.name %>" class="game-image">
+          <h2 class="game-title"><%= game.name %></h2>
+          <p class="game-rating">Rating: <%= game.avg_rating %></p>
+        </a>
+      <% end %>
+    </section>
+    <div class="browse-more">
+      <a href="<%= games_path %>">Browse More</a>
+    </div>
+
+    <h2 class="section-heading">Friends</h2>
+    <section class="friends-list">
+  <% @friends.each do |friend| %>
+    <a href="<%= user_path(friend) %>" class="friend-link">
+    <div class="friend-card">
+      
+        <div class="profile-circle">
+          <%= friend.email[0].upcase %> 
+        </div>
+      
+      <div class="friend-info">
+        <h3><%= friend.username %></h3>
+        <p>Number of Ratings: <%= friend.number_of_ratings %></p>
+      </div>
+    </div>
+    </a>
+  <% end %>
+</section>
+
+<div class="browse-more">
+  <a href="<%= friends_path(@user) %>">See all</a>
 </div>
+  </main>
 
+</body>
 
-<div class="container">
-  <div class="row">
-  <p> You are signed in as: <%= current_user.email %> </p>
-  </div>
-</div>
-
-<h2> These are the most popular games: </h2>
-<% @games.each do |game|%>
-  <p>Game: <%= game.name %> </p>
-<% end %>

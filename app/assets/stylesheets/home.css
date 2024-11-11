@@ -1,0 +1,180 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+  margin-bottom: 4rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+}
+
+.logo {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.profile-icon {
+  background-color: #000d9a;
+  color: #fff;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 1.6em;
+}
+
+.content {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.welcome-text {
+  font-size: 2.5em;
+  color: #000ba0;
+  font-weight: 600;
+}
+
+.section-heading {
+  font-size: 2em;
+  color: #222;
+  margin-top: 50px;
+  font-weight: 400;
+}
+
+.games {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.game-card {
+  width: 300px;
+  padding: 10px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  border-radius: 8px;
+}
+
+.game-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.game-image {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.game-title {
+  font-size: 1.2em;
+  margin: 10px 0;
+}
+
+.game-rating {
+  color: #555;
+}
+
+.browse-more {
+  margin-top: 30px;
+  text-align: left;
+  margin-left: 2rem;
+}
+
+.browse-more a {
+  font-size: 1.2em;
+  color: #0066cc;
+  text-decoration: none;
+}
+
+.browse-more a:hover {
+  text-decoration: underline;
+}
+
+/* Friends List Layout */
+.friends-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin: 20px 20px;
+}
+
+.friend-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 350px;
+  background-color: #fff;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.friend-card:hover {
+  background-color: #f4f4f4;
+  transform: scale(1.05);
+}
+
+.friend-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.profile-circle {
+  width: 50px;
+  height: 50px;
+  background-color: #1597c6;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.friend-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.friend-info h3 {
+  font-size: 18px;
+  margin: 0;
+  color: #333;
+}
+
+.friend-info p {
+  font-size: 14px;
+  color: gray;
+}
+
+/* .browse-more {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.browse-more a {
+  font-size: 16px;
+  color: #1597c6;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.browse-more a:hover {
+  text-decoration: underline;
+} */
