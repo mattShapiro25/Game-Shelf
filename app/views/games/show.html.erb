@@ -4,5 +4,7 @@
   <p><%= @game.description %></p>
   <p>Average Rating: <%= @game.avg_rating %></p>
   <p>Number of Players: <%= @game.num_players %></p>
+  <%= button_to "New Review", new_review_path, method: :get, data: { turbo: "false" }, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
+
   <img src="<%= @game.image %>" alt="<%= @game.name %>" />
 </div>

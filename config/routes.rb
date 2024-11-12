@@ -21,4 +21,5 @@ Rails.application.routes.draw do
   resources :games, only: [:index, :show]
   resources :users, only: [:show]
   get 'users/:id/friends', to: 'users#friends', as: 'friends'
+  resources :review
 end
