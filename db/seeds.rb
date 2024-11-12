@@ -27,3 +27,17 @@ User.create!(
   password_confirmation: 'password123',
   number_of_ratings: 0
 )
+
+#Seed sample review
+Rating.create!(
+  user_id: 1,
+  game_id: 2,
+  stars: 4,
+  text: "This game is good and this is a test review"
+)
+Rating.create!(
+  user_id: 1,
+  game_id: 2,
+  stars: 1,
+  text: "This is my second review - test review"
+)

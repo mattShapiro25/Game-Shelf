@@ -1,10 +1,39 @@
-<div class="game-show">
-  <h2> TODO: make this page </h2>
-  <h1><%= @game.name %></h1>
-  <p><%= @game.description %></p>
-  <p>Average Rating: <%= @game.avg_rating %></p>
-  <p>Number of Players: <%= @game.num_players %></p>
-  <%= button_to "New Review", new_review_path, method: :get, data: { turbo: "false" }, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
+<div class="game-show max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-lg mt-10 mb-10">
+  <h1 class="text-3xl font-bold text-gray-800 mb-4 text-center"><%= @game.name %></h1>
+  
+  <p class="text-lg text-gray-600 mb-6 text-center"><%= @game.description %></p>
+  
+  <div class="mb-4 text-center">
+    <p class="text-lg text-gray-700 font-semibold">Average Rating: <%= @game.avg_rating %></p>
+    <p class="text-md text-gray-500">Number of Players: <%= @game.num_players %></p>
+  </div>
 
-  <img src="<%= @game.image %>" alt="<%= @game.name %>" />
+  <!-- Button to add a new rating -->
+  <%= button_to "New Rating", new_game_rating_path(@game), method: :get, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg mb-6 transition duration-300 ease-in-out" %>
+  
+  <!-- Game image (smaller and centered) -->
+  <img src="<%= @game.image %>" alt="<%= @game.name %>" class="w-64 mx-auto rounded-lg shadow-md mb-6" />
+
+  <!-- Display top ratings -->
+  <% top_ratings = @game.top_ratings %>
+  <% ratings_count = top_ratings.size %>
+
+  <% if ratings_count > 0 %>
+    <h2 class="text-2xl font-semibold text-gray-800 mb-4 text-center">Top <%= ratings_count %> rating<%= "s" if ratings_count > 1 %></h2>
+    <div class="top-ratings space-y-4 text-center">
+      <% top_ratings.each do |rating| %>
+        <div class="rating p-4 border border-gray-300 rounded-lg shadow-sm hover:shadow-lg transition duration-300 ease-in-out">
+          <p class="text-lg font-semibold text-gray-800"><strong>Rating:</strong> <%= rating.stars %> stars</p>
+          <p class="text-gray-600 my-2"><%= rating.text %></p>
+          <p class="text-sm text-gray-500">
+            <small>by <%= rating.user.username %> on <%= rating.created_at.strftime("%B %d, %Y") %></small>
+          </p>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <p class="text-lg text-gray-600">No ratings yet. Be the first to leave a review!</p>
+    <%= button_to "New Rating", new_game_rating_path(@game), method: :get, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded-lg mt-4 transition duration-300 ease-in-out" %>
+  <% end %>
+
 </div>
