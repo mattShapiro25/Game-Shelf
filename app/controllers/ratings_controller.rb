@@ -20,7 +20,7 @@ class RatingsController < ApplicationController
       redirect_to game_path(@game), notice: "Rating created successfully"
     else
       flash[:alert] = 'Rating could not be created'
-      render :new
+      render :new, status: :unprocessable_content
     end
   end
 

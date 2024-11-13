@@ -8,10 +8,9 @@
     <p class="text-md text-gray-500">Number of Players: <%= @game.num_players %></p>
   </div>
 
-  <!-- Button to add a new rating -->
+
   <%= button_to "New Rating", new_game_rating_path(@game), method: :get, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg mb-6 transition duration-300 ease-in-out" %>
   
-  <!-- Game image (smaller and centered) -->
   <img src="<%= @game.image %>" alt="<%= @game.name %>" class="w-64 mx-auto rounded-lg shadow-md mb-6" />
 
   <!-- Display top ratings -->
