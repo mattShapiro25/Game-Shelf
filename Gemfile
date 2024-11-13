@@ -1,5 +1,7 @@
 source "https://rubygems.org"
 
+ruby "3.3.3"
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.2.1"
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
@@ -49,7 +51,7 @@ group :development, :test do
   gem 'rspec'
   gem 'rspec-rails', '~> 7.0.0'
   gem 'capybara'
-  
+  gem 'rails-controller-testing'
 end
 
 group :development do

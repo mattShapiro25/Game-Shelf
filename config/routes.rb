@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "reviews/new"
+  get "reviews/create"
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -18,7 +20,10 @@ Rails.application.routes.draw do
   end
 
   resources :home
-  resources :games, only: [:index, :show]
+  resources :games, only: [:index, :show] do
+    resources :ratings, only: [:new, :create]
+  end
   resources :users, only: [:show]
   get 'users/:id/friends', to: 'users#friends', as: 'friends'
+  resources :rating
 end
