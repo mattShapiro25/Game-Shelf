@@ -27,7 +27,9 @@ Rails.application.routes.draw do
   # Nesting friends under specific users
   resources :users, only: [:show] do
     # Nesting friends under users
-    resources :friends, only: [:index, :show, :new, :create]
+    resources :friends, only: [:index, :show, :new, :create] do
+      get 'search', on: :collection 
+    end
   end
   #resources :users, only: [:show]
   #get 'users/:id/friends', to: 'users#friends', as: 'friends'

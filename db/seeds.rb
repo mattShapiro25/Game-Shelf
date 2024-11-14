@@ -20,7 +20,7 @@ games.each do |game|
 end
 
 # Seed sample User
-User.create!(
+user1 = User.create!(
   username: 'testuser',
   email: 'testuser@example.com',
   password: 'password123',
@@ -28,22 +28,29 @@ User.create!(
   number_of_ratings: 2
 )
 
-User.create!(
+user2 = User.create!(
   username: 'testuser2',
   email: 'testuser2@example.com',
   password: 'password123',
   password_confirmation: 'password123',
   number_of_ratings: 0
 )
+user3 = User.create!(
+  username: 'testuser3',
+  email: 'testuser3@example.com',
+  password: 'password123',
+  password_confirmation: 'password123',
+  number_of_ratings: 0
+)
 
 #Seed sample review
-Rating.create!(
+rating1 = Rating.create!(
   user_id: 1,
   game_id: 2,
   stars: 4,
   text: "This game is good and this is a test review"
 )
-Rating.create!(
+rating2 = Rating.create!(
   user_id: 1,
   game_id: 2,
   stars: 1,
@@ -51,4 +58,6 @@ Rating.create!(
 )
 
 #Seed Sample friend
-Friend.create!(user_id1: 1, user_id2: 2)
+Friend.create_bidirectional_friend(user1, user2)
+Friend.create_bidirectional_friend(user1, user3)
+
