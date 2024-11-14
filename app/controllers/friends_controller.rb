@@ -28,7 +28,7 @@ class FriendsController < ApplicationController
       redirect_to user_friends_path(current_user) and return
     end
 
-		Friend.create_bidirectional(@user, @friend)
+		Friend.create_bidirectional_friend(@user, @friend)
 
     flash[:notice] = "Friend added successfully!"
     redirect_to user_friends_path(current_user)
