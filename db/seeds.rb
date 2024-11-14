@@ -25,6 +25,14 @@ User.create!(
   email: 'testuser@example.com',
   password: 'password123',
   password_confirmation: 'password123',
+  number_of_ratings: 2
+)
+
+User.create!(
+  username: 'testuser2',
+  email: 'testuser2@example.com',
+  password: 'password123',
+  password_confirmation: 'password123',
   number_of_ratings: 0
 )
 
@@ -41,3 +49,6 @@ Rating.create!(
   stars: 1,
   text: "This is my second review - test review"
 )
+
+#Seed Sample friend
+Friend.create!(user_id1: 1, user_id2: 2)
