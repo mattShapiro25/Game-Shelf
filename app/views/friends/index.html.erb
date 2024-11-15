@@ -1,0 +1,14 @@
+<h1>TODO Implement this page</h1>
+
+<h1> <%= button_to "Back to home", home_index_path, method: :get, class: 'btn btn-primary' %> </h2>
+
+<h1><%= @user.username %>'s Friends</h1>
+
+<ul>
+  <% @friends.each do |friend| %>
+    <li><%= link_to friend.username, user_path(friend) %></li>
+  <% end %>
+</ul>
+
+<h1> <%= button_to "Add a new friend", new_user_friend_path(current_user), method: :get, class: 'btn btn-primary' %> </h2>
+

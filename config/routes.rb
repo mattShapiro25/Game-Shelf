@@ -20,10 +20,18 @@ Rails.application.routes.draw do
   end
 
   resources :home
+  # Nesting ratings under specific games
   resources :games, only: [:index, :show] do
     resources :ratings, only: [:new, :create]
   end
-  resources :users, only: [:show]
-  get 'users/:id/friends', to: 'users#friends', as: 'friends'
+  # Nesting friends under specific users
+  resources :users, only: [:show] do
+    # Nesting friends under users
+    resources :friends, only: [:index, :show, :new, :create] do
+      get 'search', on: :collection 
+    end
+  end
+  #resources :users, only: [:show]
+  #get 'users/:id/friends', to: 'users#friends', as: 'friends'
   resources :rating
 end

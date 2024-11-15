@@ -1,0 +1,22 @@
+<%= button_to "Back to all friends", user_friends_path, method: :get, class: "btn btn-secondary" %>
+<div class="container">
+  <div class="row">
+    <h3>Would you like to add a friend?</h3>
+  </div>
+
+  <div class="row">
+    <%= form_with url: search_user_friends_path(current_user), method: :get do |form| %>
+      <div>
+        <%= form.label :query, "Search for a user:" %>
+      </div>
+      <div>
+        <%= form.text_field :query %>
+      </div>
+      <div>
+        <%= form.submit "Search" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
