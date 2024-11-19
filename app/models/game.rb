@@ -4,8 +4,12 @@ class Game < ApplicationRecord
 
   validates :name, presence: true
 
-  def top_ratings(limit = 5)
+  def top_ratings(limit)
     ratings.order(stars: :desc).limit(limit)
+  end
+
+  def self.by_search_string(search)
+    Game.where("description LIKE ?", "%#{search}%").or(Game.where("name LIKE ?", "%#{search}%")).order(:name)
   end
 
 end

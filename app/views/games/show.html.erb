@@ -15,7 +15,7 @@
   <img src="<%= @game.image %>" alt="<%= @game.name %>" class="w-64 mx-auto rounded-lg shadow-md mb-6" />
 
   <!-- Display top ratings -->
-  <% top_ratings = @game.top_ratings %>
+  <% top_ratings = @game.top_ratings(5) %>
   <% ratings_count = top_ratings.size %>
 
   <% if ratings_count > 0 %>
