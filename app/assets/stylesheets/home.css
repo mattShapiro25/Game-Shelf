@@ -13,9 +13,8 @@ body {
   padding: 15px 30px;
 }
 
-.logo {
-  font-size: 1.5em;
-  font-weight: bold;
+.home-header{
+  padding-top: 3rem;
 }
 
 .profile-icon {
@@ -33,6 +32,10 @@ body {
 .content {
   text-align: center;
   margin-top: 50px;
+}
+
+.logo{
+  min-width: 140px;
 }
 
 .welcome-text {
