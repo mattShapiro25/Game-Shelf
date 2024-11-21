@@ -6,7 +6,7 @@ class GamesController < ApplicationController
   def index
     @games = Game.all.order(avg_rating: :desc).limit(20)
     @popular = Game.all.order(num_players: :desc).limit(20)
-    
+
     @top = Game.all.order(avg_rating: :desc).limit(8)
     @top_more = Game.all.order(avg_rating: :desc).limit(20)
 

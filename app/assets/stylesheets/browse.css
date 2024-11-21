@@ -88,3 +88,25 @@
 .section-heading{
   text-align: center;
 }
+
+.no-friends{
+  width: 100vw;
+  display: block;
+  text-align: center;
+}
+
+.no-friends2 {
+  width: 100vw;
+  margin-top: -20px;
+  text-align: center;
+}
+
+.no-friends2 a {
+  font-size: 1.2em;
+  color: #0066cc;
+  text-decoration: none;
+}
+
+.no-friends2 a:hover {
+  text-decoration: underline;
+}

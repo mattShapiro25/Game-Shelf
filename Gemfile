@@ -79,5 +79,3 @@ gem 'dotenv-rails'
 gem "tailwindcss-rails"
 gem 'factory_bot_rails'
 gem "dockerfile-rails", ">= 1.6", :group => :development
-
-gem "webpacker", "~> 5.4"
