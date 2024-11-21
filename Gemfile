@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby "3.3.3"
+ruby "3.3.5"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.2.1"
@@ -79,3 +79,5 @@ gem 'dotenv-rails'
 gem "tailwindcss-rails"
 gem 'factory_bot_rails'
 gem "dockerfile-rails", ">= 1.6", :group => :development
+
+gem "webpacker", "~> 5.4"

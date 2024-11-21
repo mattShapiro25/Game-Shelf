@@ -8,7 +8,9 @@
 
   <header class="header">
     <div class="logo">Logo</div>
-    <div class="profile-icon"><%= current_user.email[0].upcase %></div>
+    <a href="<%= user_path(current_user.id) %>">
+      <div class="profile-icon"><%= current_user.email[0].upcase %></div>
+    </a>
   </header>
   <main class="content">
   <h1 class="welcome-text">Welcome <%= current_user.email.split('@').first %></h1>
