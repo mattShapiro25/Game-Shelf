@@ -7,7 +7,11 @@
 <body>
 
   <header class="header">
-    <div class="logo">Logo</div>
+    <div class="logo">
+      <a href="<%= home_index_path %>">
+        <%= image_tag 'logo.png', alt: 'Logo' %>
+      </a>
+    </div>
     <a href="<%= user_path(current_user.id) %>">
       <div class="profile-icon"><%= current_user.email[0].upcase %></div>
     </a>

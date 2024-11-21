@@ -12,7 +12,11 @@
     <% end %>
 
     <header class="header">
-        <div class="logo">Logo</div>
+        <div class="logo">
+        <a href="<%= home_index_path %>">
+            <%= image_tag 'logo.png', alt: 'Logo' %>
+        </a>
+        </div>
         <div class="search-form">
             <%= form_with url: games_path, method: :get, class: "search-form-container" do |form| %>
                 <div class="form-group">
