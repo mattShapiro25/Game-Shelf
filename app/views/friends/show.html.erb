@@ -1,0 +1,19 @@
+<h1> Definitely still needs some work and we need to decide what to include here </h1>
+
+<h1><%= @friend.username %>'s Profile</h1>
+
+<p>
+  <strong>Username:</strong> <%= @friend.username %><br>
+  <strong>Email:</strong> <%= @friend.email %><br>
+  
+  <strong>Friends:</strong> <%= pluralize(@friend.friends.count, 'friend') %>
+</p>
+
+<h2>Friends</h2>
+<ul>
+  <% @friend.friends.each do |friend| %>
+    <li><%= link_to friend.username, user_friend_path(@friend, friend) %></li>
+  <% end %>
+</ul>
+
+<%= link_to 'Back to Friends', user_friends_path(@user) %> 

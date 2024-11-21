@@ -7,5 +7,9 @@ class Friend < ApplicationRecord
     create!(user_id1: user1.id, user_id2: user2.id)
     create!(user_id1: user2.id, user_id2: user1.id)
   end
+  
+  #ensures only unique friendships can be created
+  validates :user_id1, uniqueness: { scope: :user_id2 }
+
 
 end

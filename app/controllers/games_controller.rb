@@ -1,5 +1,5 @@
 class GamesController < ApplicationController
-  def index
+  def index   #Do we even use this ever?
     @games = Game.all
     #@default_games = Game.top_ratings(16)
   end

@@ -1,14 +1,14 @@
 class UsersController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+  before_action :authenticate_user!
 
   def show
     @user = User.find(params[:id])
   end
 
-  def friends
-    @user = User.find(params[:id])
-    #@friends = User.all #TODO REPLACE
-    @friends = @user.friends # This will be fixed later  ----edit should be good
+  def friends  #pretty sure this is not needed?
+    # @user = User.find(params[:id])
+    # @friends = @user.friends # This will be fixed later  ----edit should be good
   end
 
   # def search
@@ -24,7 +24,8 @@ private
 
   def record_not_found
     flash[:alert] = "Invalid user."
-    redirect_to home_index_path # temporary location
+    redirect_to home_index_path 
   end
+
 
 end

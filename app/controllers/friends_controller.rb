@@ -2,6 +2,8 @@ class FriendsController < ApplicationController
 	before_action :authenticate_user! 
   before_action :set_user
 
+	rescue_from ActiveRecord::RecordNotFound, with: :handle_bad_user_id
+
 	def index 
 		@friends = @user.friends
 	end
@@ -49,5 +51,10 @@ private
   	@user = current_user
 		redirect_to new_user_session_path unless @user
 	end
+
+	def handle_bad_user_id
+    flash[:alert] = 'Invalid user.'
+    redirect_to home_index_path
+  end
   
 end
