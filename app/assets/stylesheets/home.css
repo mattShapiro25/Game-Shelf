@@ -13,9 +13,8 @@ body {
   padding: 15px 30px;
 }
 
-.logo {
-  font-size: 1.5em;
-  font-weight: bold;
+.home-header{
+  padding-top: 3rem;
 }
 
 .profile-icon {
@@ -33,6 +32,10 @@ body {
 .content {
   text-align: center;
   margin-top: 50px;
+}
+
+.logo{
+  min-width: 140px;
 }
 
 .welcome-text {
@@ -57,7 +60,7 @@ body {
 }
 
 .game-card {
-  width: 300px;
+  width: 20%;
   padding: 10px;
   background-color: #fff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);

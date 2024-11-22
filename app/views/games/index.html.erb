@@ -1,31 +1,98 @@
-<div class="container">
-<h4> we should create a default set of games to display besides all of them. </p>
-
-    <%if flash[:notice]%>
+<head>
+  <title>Games Page</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag 'application', 'browse', media: 'all' %>
+</head>
+<body>
+    <% if flash[:notice] %>
         <div class="flash-sucess">
             <%= flash[:notice]%>
         </div>
-    <%end%>
+    <% end %>
 
-    <div class="row">
-        <h1>Browse Games</h1>
-        <%= form_with url: games_path, method: :get do |form| %>
-            <%= form.label :query, "Search for: " %>
-            <%= form.text_field :query, value: @query_filt %>
-            <%= form.submit "Search", class: "btn btn-sm btn-primary" %>
-            <%= link_to "Back to all games", games_path, class: "btn btn-sm btn-light" %>
+    <header class="header">
+        <div class="logo">
+        <a href="<%= home_index_path %>">
+            <%= image_tag 'logo.png', alt: 'Logo' %>
+        </a>
+        </div>
+        <div class="search-form">
+            <%= form_with url: games_path, method: :get, class: "search-form-container" do |form| %>
+                <div class="form-group">
+                <%= form.text_field :query, value: @query_filt, class: "form-input", placeholder: "Search for games" %>
+                <div class="form-actions">
+                <%= form.submit "Search", class: "btn btn-primary" %>
+                <% if @query_filt.present? %>
+                    <%= link_to "Clear Search", games_path, class: "btn btn-light" %>
+                <% end %>
+                </div>
+                </div>
+            <% end %>
+            </div>
+        <a href="<%= user_path(current_user.id) %>">
+            <div class="profile-icon"><%= current_user.email[0].upcase %></div>
+        </a>
+    </header>
+
+    <main class="content">
+        <div class="row">
+        <% if !(params[:query].present? && params[:query].length > 2) %>
+            <h1 class="title">Browse Games</h1>
         <% end %>
 
-        <h1> <%= button_to "Back to home", home_index_path, method: :get, class: 'btn btn-primary' %> </h2>
+            <% if params[:query].present? && params[:query].length > 2 %>
+                <h2 class="section-heading">Matching your Search: '<%= params[:query] %>'</h2>
+                <section class="games" id="games-section">
+                    <% @games.each do |game| %>
+                        <a href="<%= game_path(game) %>" class="game-card">
+                        <img src="<%= game.image %>" alt="<%= game.name %>" class="game-image">
+                        <h2 class="game-title"><%= game.name %></h2>
+                        <p class="game-rating">Rating: <%= game.avg_rating %></p>
+                        </a>
+                    <% end %>
+                </section>
+            <% end %>
 
-        <section class="games">
-        <% @games.each do |game| %>
-            <a href="<%= game_path(game) %>" class="game-card">
-            <img src="<%= game.image %>" alt="<%= game.name %>" class="game-image">
-            <h2 class="game-title"><%= game.name %></h2>
-            <p class="game-rating">Rating: <%= game.avg_rating %></p>
-            </a>
-      <% end %>
-    </section>
-    </div>
-</div>
+            <h2 class="section-heading">Top Rated Games</h2>
+            <section class="games" id="games-section">
+                <% @top.each do |game| %>
+                    <a href="<%= game_path(game) %>" class="game-card">
+                    <img src="<%= game.image %>" alt="<%= game.name %>" class="game-image">
+                    <h2 class="game-title"><%= game.name %></h2>
+                    <p class="game-rating">Rating: <%= game.avg_rating %></p>
+                    </a>
+                <% end %>
+            </section>
+
+            <h2 class="section-heading">Games Played by Friends</h2>
+            <section class="games">
+                <% if @games_friends_played.length > 0%>
+                    <% @games_friends_played.each do |game| %>
+                        <a href="<%= game_path(game) %>" class="game-card">
+                        <img src="<%= game.image %>" alt="<%= game.name %>" class="game-image">
+                        <h2 class="game-title"><%= game.name %></h2>
+                        <p class="game-rating">Rating: <%= game.avg_rating %></p>
+                        </a>
+                    <% end %>
+                <% else %>
+                <div class="no-friends">Nothing to Show</div>
+                <div class="no-friends2">
+                    <a href="<%= user_friends_path(current_user) %>"><p >Connect with other Members</a>
+                </div>
+                <% end %>
+            </section>
+
+            <h2 class="section-heading">Popular Games</h2>
+            <section class="games">
+                <% @popular.each do |game| %>
+                    <a href="<%= game_path(game) %>" class="game-card">
+                    <img src="<%= game.image %>" alt="<%= game.name %>" class="game-image">
+                    <h2 class="game-title"><%= game.name %></h2>
+                    <p class="game-rating">Rating: <%= game.avg_rating %></p>
+                    </a>
+                <% end %>
+            </section>
+        </div>
+    </main>
+</body>

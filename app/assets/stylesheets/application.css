@@ -13,4 +13,9 @@
  *= require_tree .
  *= require_self
  */
+ .logo{
+  width: 140px;
+  top: 1rem;
+  left: 1rem;
+ }
  
