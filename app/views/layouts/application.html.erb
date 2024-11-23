@@ -36,15 +36,7 @@
       <% end %>
     </div>
 
-      <div class="row">
-        <div class="col text-end">
-          <% unless controller_name == 'sessions' %>
-            <% if current_user && request.path == user_path(current_user) %>
-              <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "btn btn-outline-danger" %>
-            <% end %>
-          <% end %>
-        </div>
-      </div>
+      
     </div>
   
     <%= yield %>

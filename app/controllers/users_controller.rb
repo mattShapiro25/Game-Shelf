@@ -4,21 +4,10 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @games_with_ratings = Rating.joins(:game).where(user_id: @user.id).select("games.*, ratings.stars AS user_rating")
+    @friends = @user.friends
+    @games_played_count = @user.ratings.count
   end
-
-  def friends  #pretty sure this is not needed?
-    # @user = User.find(params[:id])
-    # @friends = @user.friends # This will be fixed later  ----edit should be good
-  end
-
-  # def search
-  #   if params[:query].present?
-  #     @users = User.where('username LIKE ?', "%#{params[:query]}%")
-  #   else
-  #     @users = User.none 
-  #   end
-  # end
-
 
 private
 
