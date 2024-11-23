@@ -9,5 +9,19 @@
   .btn-primary {
     @apply py-2 px-4 bg-blue-300;
   }
+
+  .app-header {
+    @apply w-full flex items-center px-4 py-2 bg-white shadow rounded-lg relative
+  }
+
+  .app-header-title {
+    @apply text-xl font-bold text-blue-600 absolute left-1/2 transform -translate-x-1/2 w-full text-center
+  }
+
+  .back-button {
+    @apply absolute top-4 left-4 bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded
+  }
+
+
 }
 

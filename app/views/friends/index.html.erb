@@ -4,7 +4,7 @@
   <%= csp_meta_tag %>
   <%= stylesheet_link_tag 'application', 'friend.tailwind.css', media: 'all' %>
 </head> 
-<body>
+
   <header class="w-full flex items-center px-4 py-2 bg-white shadow rounded-lg relative">
    
     <div class="logo flex-shrink-0 z-10">
@@ -13,16 +13,19 @@
       </a>
     </div>
   
-    
     <h1 class="text-xl font-bold text-blue-600 absolute left-1/2 transform -translate-x-1/2 w-full text-center">Your Friends</h1>
   </header>
   
   
- 
-  <main class="flex justify-center items-start mt-10 px-4">
+<body>
+  <main class="flex justify-center items-start mt-5 px-4">
     <div class="bg-white shadow-lg rounded-lg w-full max-w-md p-6">
-      <h1 class="text-3xl font-bold text-gray-800 mb-6 text-center"><%= @user.username %>'s Friends</h1>
-      
+      <h1 class="text-xl font-bold text-gray-800 mb-5 text-center"><%= @user.username %>'s Friends</h1>
+      <div class="text-center mb-5">
+        <%= button_to "Add a new friend", new_user_friend_path(current_user), 
+            method: :get, 
+            class: 'bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-full text-md transition duration-150 ease-in-out shadow-md' %>
+      </div>
       <ul class="space-y-4 mb-8">
         <% @friends.each do |friend| %>
           <li class="bg-gray-50 hover:bg-gray-100 transition duration-150 ease-in-out rounded-lg shadow-sm overflow-hidden">
@@ -30,7 +33,7 @@
               <%= link_to user_friend_path(@user, friend), class: "text-lg font-semibold text-blue-600 hover:text-blue-800" do %>
                 <%= friend.username %>
               <% end %>
-              <%= button_to "Remove Friend", user_friends_path(user_id: current_user.id, friend_id: friend.id), 
+              <%= button_to "Remove Friend", user_friend_path(user_id: current_user.id, id: friend.id), 
                   method: :delete, 
                   class: "bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full text-sm transition duration-150 ease-in-out",
                   form: { data: { turbo_confirm: "Are you sure you want to remove this friend?" } } %>
@@ -39,11 +42,7 @@
         <% end %>
       </ul>
       
-      <div class="text-center">
-        <%= button_to "Add a new friend", new_user_friend_path(current_user), 
-            method: :get, 
-            class: 'bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-full text-lg transition duration-150 ease-in-out shadow-md' %>
-      </div>
+      
     </div>
   </main>
   
