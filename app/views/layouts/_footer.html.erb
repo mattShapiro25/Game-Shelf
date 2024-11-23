@@ -1,0 +1,21 @@
+<footer class="site-footer">
+  <div class="foot-left">
+    <div class="foot-logo">
+      <a href="<%= home_index_path %>">
+        <%= image_tag 'foot-logo.png', alt: 'Logo' %>
+      </a>
+    </div>
+    <p>&copy; <%= Time.now.year %> GameShelf.</p> 
+  </div>
+
+  <div class="foot-right">
+    <nav>
+      <a href="<%= user_path(current_user.id) %>">
+        <p>Your Profile</p>
+      </a>
+      <a href="<%= destroy_user_session_path %>">
+        <p>Logout</p>
+      </a>
+    </nav>
+  </div>
+</footer>
