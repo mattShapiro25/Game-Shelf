@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+*= require footer
  */
  .logo{
   width: 140px;
