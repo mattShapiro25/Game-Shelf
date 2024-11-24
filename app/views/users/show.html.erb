@@ -1,5 +1,89 @@
-<h1>TODO Implement this page</h1>
+<head>
+  <title>User Profile</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag 'application', 'profile', media: 'all' %>
+</head>
+<body>
+  <header class="header">
+    <div class="logo">
+      <a href="<%= home_index_path %>">
+          <%= image_tag 'logo.png', alt: 'Logo' %>
+      </a>
+    </div>
+    <% if @user != current_user %>
+      <a href="<%= user_path(current_user.id) %>">
+        <div class="profile-icon"><%= current_user.email[0].upcase %></div>
+      </a>
+    <% end %>
+  </header>
 
-<h1><%= @user.username %></h1>
-<p>Email: <%= @user.email %></p>
-<p>Number of Ratings: <%= @user.number_of_ratings %></p>
+  <% if @user == current_user %>
+    <section class="profile-head">
+      <a href="<%= user_path(@user.id) %>">
+        <div class="center-profile-icon"><%= @user.email[0].upcase %></div>
+      </a>
+      <div class="right-profile-head">
+        <h1 class="profile-text"><%= current_user.email.split('@').first.capitalize %></h1>
+        <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "logout" %>
+      </div>
+    </section>
+  <% end %>
+
+  <% if @user == current_user %>
+    <section class="profile-info">
+      <h2 class="section-heading">Your Information</h2>
+      <p class="info-line">Username: <%= @user.username %></p>
+      <p class="info-line">Email: <%= @user.email %></p>
+      <p class="info-line">Number of Games Rated: <%= @games_played_count %></p>
+    </section>
+  <% end %>
+
+  <% if @user == current_user %>
+    <h2 class="section-heading">Your Games</h2>
+  <% else %>
+    <h2 class="section-heading"><%= @user.username.capitalize %>'s Games</h2> 
+  <% end %>
+  <section class="games" id="games-section">
+      <% @games_with_ratings.each do |game| %>
+          <a href="<%= game_path(game) %>" class="game-card">
+          <img src="<%= game.image %>" alt="<%= game.name %>" class="game-image">
+          <h2 class="game-title"><%= game.name %></h2>
+          <p class="game-rating">Your Rating: <%= game.user_rating %></p>
+          </a>
+      <% end %>
+  </section>
+
+  <% if @user == current_user %>
+    <h2 class="section-heading">Your Friends</h2>
+  <% else %>
+    <h2 class="section-heading"><%= @user.username.capitalize %>'s Friends</h2> 
+  <% end %>
+  <section class="friends-list">
+    <% @friends.each do |friend| %>
+      <a href="<%= user_path(friend) %>" class="friend-link">
+        <div class="friend-card">
+          <div class="profile-circle">
+            <%= friend.email[0].upcase %> 
+          </div>
+          <div class="friend-info">
+            <h3><%= friend.username.capitalize %></h3>
+            <p>Number of Ratings: <%= friend.number_of_ratings %></p>
+          </div>
+        </div>
+      </a>
+    <% end %>
+  </section>
+  <% if @user == current_user %>
+    <div class="browse-more">
+      <a href="<%= user_friends_path(@user) %>">See all</a>
+    </div>
+  <% else %>
+    <div class="browse-more">
+      <a href="<%= user_friends_path(@user) %>">Connect with More Friends</a>
+    </div>
+  <% end %>
+
+
+
+</body>
