@@ -1,5 +1,16 @@
+<head>
+  <title>Browse Games Page</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= stylesheet_link_tag 'application.tailwind', media: 'all' %>
+</head> 
+<!-- TEMPORARY BUTTON LOCATION -->
+<div><%= button_to "Back to Browse", games_path, method: :get, class: "back-button" %></div> 
 <div class="game-show max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-lg mt-10 mb-10">
-<h1 class="text-orange-500">   WE SHOULD USE JAVASCRIPT TO HAVE NEW RATING FORM POP UP OVER SHOW PAGE ONCE WE LEARN IT UNTIL THEN, WILL USE REDIRECT </p>
+<h1 class="text-orange-500">   WE SHOULD USE JAVASCRIPT TO HAVE NEW RATING FORM POP UP OVER SHOW PAGE ONCE WE LEARN IT UNTIL THEN, WILL USE REDIRECT </h1>
+
+
 <h1 class="text-3xl font-bold text-gray-800 mb-4 text-center"><%= @game.name %></h1>
   
   <p class="text-lg text-gray-600 mb-6 text-center"><%= @game.description %></p>

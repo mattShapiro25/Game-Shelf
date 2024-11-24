@@ -19,14 +19,16 @@
   <div class="relative">
     <%= button_to "Back to Search", new_user_friend_path, method: :get, class: "back-button" %>
   </div>
-
+  
   <body class="outer-body">
     <main class="inner-main">
       
       <div class="inner-div">
-        
-        <h1 class="inner-h1">Results</h1>
-        
+        <%= turbo_frame_tag 'search-results' do %>
+        <div class="flex items-center justify-center mb-5 relative">
+          <%= button_to "Back", user_friends_path(@user), method: :get, class: "back-button absolute left-0 mt-3", data: { turbo_frame: "_top" } %>
+          <h1 class="inner-h1">Results</h1>
+        </div>
         <div class="text-center mb-5">
           <% if @users.any? %>
             <ul class="space-y-4 mb-8"> 
@@ -47,14 +49,12 @@
             <p>No users found matching your search.</p>
           <% end %>
         </div>
-        
-          
-
-
-        </div>
-      </div>
-    </main>
-  </body>
+        <% end %>
+       </div>
+     </div>
+   </main>
+</body>
+  
   
 
 

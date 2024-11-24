@@ -22,6 +22,10 @@
     @apply absolute top-4 left-4 bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded
   }
 
+  .back-button-non-absolute {
+    @apply top-4 left-4 bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded
+  }
+
 
 }
 

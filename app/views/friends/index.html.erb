@@ -22,9 +22,11 @@
     <div class="bg-white shadow-lg rounded-lg w-full max-w-md p-6">
       <h1 class="text-xl font-bold text-gray-800 mb-5 text-center"><%= @user.username %>'s Friends</h1>
       <div class="text-center mb-5">
+        <%= turbo_frame_tag 'add-friend' do %>
         <%= button_to "Add a new friend", new_user_friend_path(current_user), 
             method: :get, 
             class: 'bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-full text-md transition duration-150 ease-in-out shadow-md' %>
+        <% end %>
       </div>
       <ul class="space-y-4 mb-8">
         <% @friends.each do |friend| %>
