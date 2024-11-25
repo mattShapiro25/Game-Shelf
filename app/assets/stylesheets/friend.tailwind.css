@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+@layer components {
+  
+  .outer-body{
+    @apply bg-gray-100 min-h-min flex-col
+  }
+
+  .inner-main{
+    @apply flex-grow flex justify-center px-4 py-5 pb-10
+  }
+
+  .inner-div {
+    @apply bg-white shadow-lg rounded-lg w-full max-w-md p-6 
+  }
+
+  .inner-h1 {
+    @apply text-xl font-bold text-gray-800 mb-5 text-center
+  }
+
+  .add-friend-button {
+    @apply bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full text-sm transition duration-150 ease-in-out
+  }
+
+  .add-friend-outer{
+    @apply bg-gray-50 hover:bg-gray-100 transition duration-150 ease-in-out rounded-lg shadow-sm overflow-hidden
+  }
+
+
+  
+}

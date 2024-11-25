@@ -1,22 +1,54 @@
-<%= button_to "Back to all friends", user_friends_path, method: :get, class: "btn btn-secondary" %>
-<div class="container">
-  <div class="row">
-    <h3>Would you like to add a friend?</h3>
-  </div>
+<head>
+  <title>New Friend Page</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag 'application', 'friend.tailwind.css', media: 'all' %>
+</head> 
 
-  <div class="row">
-    <%= form_with url: search_user_friends_path(current_user), method: :get do |form| %>
-      <div>
-        <%= form.label :query, "Search for a user:" %>
-      </div>
-      <div>
-        <%= form.text_field :query %>
-      </div>
-      <div>
-        <%= form.submit "Search" %>
-      </div>
-    <% end %>
+  <header class="app-header">
+   
+    <div class="logo flex-shrink-0 z-10">
+      <a href="<%= home_index_path %>" class="flex items-center">
+        <%= image_tag 'logo.png', alt: 'Logo', class: "h-auto w-auto" %>
+      </a>
+    </div>
+  
+    <h1 class="app-header-title">Add New Friend</h1>
+  </header>
+  
+  <div class="relative">
+    <%= button_to "Back to all friends", user_friends_path, method: :get, class: "back-button" %>
   </div>
-</div>
+  
+  <%= turbo_frame_tag 'add-friend' do %>
+  <body class="outer-body">
+    <main class="inner-main">
+      
+      <div class="inner-div">
+        
+        <h1 class="inner-h1">Add a New Friend</h1>
+        
+        <div class="text-center mb-5">
+           
+          <%= form_with url: search_user_friends_path(current_user), method: :get, data: { turbo_frame: 'search-results' }, class: "space-y-4" do |form| %>
+            <div>
+              <%= form.label :query, "Search for a user:", class: "block mb-2" %>
+              <%= form.text_field :query, class: "w-full px-3 py-2 border rounded-md mb-3" %>
+            </div>
+            <%= turbo_frame_tag 'search-friend' do %>
+            <div class="flex justify-center mb-5  w-full">
+              <%= form.submit "Search", class: "bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded text-center" %>
+            </div>
+            <% end %>
+          <% end %>
+          <%= turbo_frame_tag 'search-results' %>
+        </div>
+      </div>
+    </main>
+  </body>
+  <% end %>
+  
+
+
 
 

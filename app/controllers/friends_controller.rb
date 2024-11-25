@@ -22,19 +22,25 @@ class FriendsController < ApplicationController
 
 		if @friend == current_user
       flash[:alert] = "You cannot add yourself as a friend."
-      redirect_to user_friends_path(current_user) and return
+      redirect_to new_user_friend_path(current_user) and return
     end
 
     if current_user.friends.include?(@friend)
       flash[:alert] = "You are already friends with this user."
-      redirect_to user_friends_path(current_user) and return
+      redirect_to new_user_friend_path(current_user) and return
     end
 
 		Friend.create_bidirectional_friend(@user, @friend)
 
     flash[:notice] = "Friend added successfully!"
     redirect_to user_friends_path(current_user)
+	end
 
+	def destroy
+		@friend = @user.friends.find(params[:id])
+		Friend.destroy_bidirectional_friend(current_user, @friend)
+		flash[:notice] = "Friend removed successfully"
+		redirect_to user_friends_path(current_user)
 	end
 
 	def search
