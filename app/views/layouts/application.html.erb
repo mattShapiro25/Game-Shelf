@@ -21,28 +21,26 @@
   </head>
 
   <body>
+    <div class="page-wrapper">
+      <div class="row">
+        <% if flash[:notice] && !(controller.controller_name == "sessions" && controller.action_name == "new")  %>
+          <div class="alert alert-success" role="alert">
+            <%= flash[:notice] %>
+          </div>
+        <% end %>
 
-    <div class="row">
-      <% if flash[:notice] && !(controller.controller_name == "sessions" && controller.action_name == "new")  %>
-        <div class="alert alert-success" role="alert">
-          <%= flash[:notice] %>
-        </div>
-      <% end %>
-
-      <% if flash[:alert]  && !(controller.controller_name == "sessions" && controller.action_name == "new") %>
-        <div class="alert alert-danger" role="alert">
-          <%= flash[:alert] %>
-        </div>
+        <% if flash[:alert]  && !(controller.controller_name == "sessions" && controller.action_name == "new") %>
+          <div class="alert alert-danger" role="alert">
+            <%= flash[:alert] %>
+          </div>
+        <% end %>
+      </div>
+      <main class="main-content">
+        <%= yield %>
+      </main>
+      <% if current_user %>
+        <%= render 'layouts/footer' %>
       <% end %>
     </div>
-
-      
-    </div>
-  
-    <%= yield %>
-
-    <% unless controller_name == 'sessions' %>
-      <%= render 'layouts/footer' %>
-    <% end %>
   </body>
 </html>

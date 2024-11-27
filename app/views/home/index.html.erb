@@ -17,7 +17,7 @@
     </a>
   </header>
   <main class="content">
-  <h1 class="welcome-text">Welcome <%= current_user.email.split('@').first %></h1>
+  <h1 class="welcome-text">Welcome <%= current_user.email.split('@').first.capitalize %></h1>
   <h2 class="section-heading">Popular Games</h2>
     <section class="games">
       <% @games.each do |game| %>
@@ -34,21 +34,28 @@
 
     <h2 class="section-heading">Friends</h2>
     <section class="friends-list">
-  <% @friends.each do |friend| %>
-    <a href="<%= user_path(friend) %>" class="friend-link">
-    <div class="friend-card">
-      
-        <div class="profile-circle">
-          <%= friend.email[0].upcase %> 
+    <% if @friends.length > 0%>
+      <% @friends.each do |friend| %>
+        <a href="<%= user_path(friend) %>" class="friend-link">
+        <div class="friend-card">
+          
+            <div class="profile-circle">
+              <%= friend.email[0].upcase %> 
+            </div>
+          
+          <div class="friend-info">
+            <h3><%= friend.username %></h3>
+            <p>Number of Ratings: <%= friend.number_of_ratings %></p>
+          </div>
         </div>
-      
-      <div class="friend-info">
-        <h3><%= friend.username %></h3>
-        <p>Number of Ratings: <%= friend.number_of_ratings %></p>
+        </a>
+      <% end %>
+    <% else %>
+      <div class="no-friends">Nothing to Show</div>
+      <div class="no-friends2">
+          <a href="<%= user_friends_path(current_user) %>"><p>Connect with other Members</a>
       </div>
-    </div>
-    </a>
-  <% end %>
+    <% end %>
 </section>
 
 <div class="browse-more">
