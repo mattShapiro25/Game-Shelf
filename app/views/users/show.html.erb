@@ -45,6 +45,7 @@
     <h2 class="section-heading"><%= @user.username.capitalize %>'s Games</h2> 
   <% end %>
   <section class="games" id="games-section">
+    <% if @games_with_ratings.length > 0 %>
       <% @games_with_ratings.each do |game| %>
           <a href="<%= game_path(game) %>" class="game-card">
           <img src="<%= game.image %>" alt="<%= game.name %>" class="game-image">
@@ -52,6 +53,14 @@
           <p class="game-rating">Your Rating: <%= game.user_rating %></p>
           </a>
       <% end %>
+    <% elsif @user == current_user%>
+      <div class="no-friends">Nothing to Show</div>
+      <div class="no-friends2">
+          <a href="<%= games_path %>"><p>Browse Games</a>
+      </div>
+    <% else %>
+        <div class="no-friends"><%= @user.username.capitalize%> hasn't rated any games.</div>
+    <% end %>
   </section>
 
   <% if @user == current_user %>
@@ -59,26 +68,36 @@
   <% else %>
     <h2 class="section-heading"><%= @user.username.capitalize %>'s Friends</h2> 
   <% end %>
+
   <section class="friends-list">
-    <% @friends.each do |friend| %>
-      <a href="<%= user_path(friend) %>" class="friend-link">
-        <div class="friend-card">
-          <div class="profile-circle">
-            <%= friend.email[0].upcase %> 
+    <% if @friends.length > 0 %>
+      <% @friends.each do |friend| %>
+        <a href="<%= user_path(friend) %>" class="friend-link">
+          <div class="friend-card">
+            <div class="profile-circle">
+              <%= friend.email[0].upcase %> 
+            </div>
+            <div class="friend-info">
+              <h3><%= friend.username.capitalize %></h3>
+              <p>Number of Ratings: <%= friend.number_of_ratings %></p>
+            </div>
           </div>
-          <div class="friend-info">
-            <h3><%= friend.username.capitalize %></h3>
-            <p>Number of Ratings: <%= friend.number_of_ratings %></p>
-          </div>
-        </div>
-      </a>
+        </a>
+      <% end %>
+    <% elsif @user == current_user%>
+      <div class="no-friends">Nothing to Show</div>
+      <div class="no-friends2">
+          <a href="<%= user_friends_path(current_user) %>"><p>Connect with other Members</a>
+      </div>
+    <% else %>
+      <div class="no-friends"><%= @user.username.capitalize%> has no friends</div>
     <% end %>
   </section>
-  <% if @user == current_user %>
+  <% if @user == current_user && @friends.length > 0 %>
     <div class="browse-more">
       <a href="<%= user_friends_path(@user) %>">See all</a>
     </div>
-  <% else %>
+  <% elsif @user != current_user%>
     <div class="browse-more">
       <a href="<%= user_friends_path(@user) %>">Connect with More Friends</a>
     </div>

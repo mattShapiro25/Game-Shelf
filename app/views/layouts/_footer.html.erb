@@ -13,8 +13,8 @@
       <a href="<%= user_path(current_user.id) %>">
         <p>Your Profile</p>
       </a>
-      <a href="<%= destroy_user_session_path %>">
-        <p>Logout</p>
+      <a>
+        <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: "logout-button" %>
       </a>
     </nav>
   </div>

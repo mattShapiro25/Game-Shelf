@@ -1,5 +1,5 @@
 <head>
-  <title>Browse Games Page</title>
+  <title><% @game.name %> Page</title>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
   <%= stylesheet_link_tag 'application', media: 'all' %>
@@ -13,15 +13,14 @@
 
 <h1 class="text-3xl font-bold text-gray-800 mb-4 text-center"><%= @game.name %></h1>
   
-  <p class="text-lg text-gray-600 mb-6 text-center"><%= @game.description %></p>
+<!-- p class="text-lg text-gray-600 mb-6 text-center"><%= @game.description %></p-->
   
-  <div class="mb-4 text-center">
-    <p class="text-lg text-gray-700 font-semibold">Average Rating: <%= @game.avg_rating %></p>
-    <p class="text-md text-gray-500">Number of Players: <%= @game.num_players %></p>
-  </div>
+<div class="mb-4 text-center">
+  <p class="text-lg text-gray-700 font-semibold">Average Rating: <%= @game.avg_rating %></p>
+  <p class="text-md text-gray-500">Number of Players: <%= @game.num_players %></p>
 
-
-  <%= button_to "New Rating", new_game_rating_path(@game), method: :get, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg mb-6 transition duration-300 ease-in-out" %>
+  <%= button_to "New Rating", new_game_rating_path(@game), method: :get, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg my-6 transition duration-300 ease-in-out" %>
+</div>
   
   <img src="<%= @game.image %>" alt="<%= @game.name %>" class="w-64 mx-auto rounded-lg shadow-md mb-6" />
 
@@ -43,7 +42,7 @@
       <% end %>
     </div>
   <% else %>
-    <p class="text-lg text-gray-600">No ratings yet. Be the first to leave a review!</p>
+    <p class="text-lg text-gray-600 text-center mt-12">No ratings yet. Be the first to leave a review!</p>
     <%= button_to "New Rating", new_game_rating_path(@game), method: :get, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded-lg mt-4 transition duration-300 ease-in-out" %>
   <% end %>
 

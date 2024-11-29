@@ -90,13 +90,13 @@
 }
 
 .no-friends{
-  width: 100vw;
+  width: 100%;
   display: block;
   text-align: center;
 }
 
 .no-friends2 {
-  width: 100vw;
+  width: 100%;
   margin-top: -20px;
   text-align: center;
 }

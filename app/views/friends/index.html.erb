@@ -4,23 +4,25 @@
   <%= csp_meta_tag %>
   <%= stylesheet_link_tag 'application', 'friend.tailwind.css', media: 'all' %>
 </head> 
+<header class="w-full flex justify-between items-center px-4 py-2 bg-white shadow rounded-lg relative">
+  <div class="logo flex-shrink-0 z-10">
+    <a href="<%= home_index_path %>" class="flex items-center">
+      <%= image_tag 'logo.png', alt: 'Logo', class: "h-auto w-auto" %>
+    </a>
+  </div>
 
-  <header class="w-full flex items-center px-4 py-2 bg-white shadow rounded-lg relative">
-   
-    <div class="logo flex-shrink-0 z-10">
-      <a href="<%= home_index_path %>" class="flex items-center">
-        <%= image_tag 'logo.png', alt: 'Logo', class: "h-auto w-auto" %>
-      </a>
-    </div>
-  
-    <h1 class="text-xl font-bold text-blue-600 absolute left-1/2 transform -translate-x-1/2 w-full text-center">Your Friends</h1>
-  </header>
-  
-  
+  <h1 class="text-xl font-bold text-blue-600 absolute left-1/2 transform -translate-x-1/2 w-full text-center">Your Friends</h1>
+
+  <div class="z-10">
+    <a href="<%= user_path(current_user.id) %>">
+      <div class="profile-icon"><%= current_user.email[0].upcase %></div>
+    </a>
+  </div>
+</header>
 <body>
   <main class="flex justify-center items-start mt-5 px-4">
     <div class="bg-white shadow-lg rounded-lg w-full max-w-md p-6">
-      <h1 class="text-xl font-bold text-gray-800 mb-5 text-center"><%= @user.username %>'s Friends</h1>
+      <h1 class="text-xl font-bold text-gray-800 mb-5 text-center"><%= @user.username.capitalize %>'s Friends</h1>
       <div class="text-center mb-5">
         <%= turbo_frame_tag 'add-friend' do %>
         <%= button_to "Add a new friend", new_user_friend_path(current_user), 
@@ -32,7 +34,7 @@
         <% @friends.each do |friend| %>
           <li class="bg-gray-50 hover:bg-gray-100 transition duration-150 ease-in-out rounded-lg shadow-sm overflow-hidden">
             <div class="p-4 flex justify-between items-center">
-              <%= link_to user_friend_path(@user, friend), class: "text-lg font-semibold text-blue-600 hover:text-blue-800" do %>
+              <%= link_to user_path(friend), class: "text-lg font-semibold text-blue-600 hover:text-blue-800" do %>
                 <%= friend.username %>
               <% end %>
               <%= button_to "Remove Friend", user_friend_path(user_id: current_user.id, id: friend.id), 
