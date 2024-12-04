@@ -36,7 +36,7 @@
                 <% if current_user != user %> 
                   <li class="add-friend-outer">
                     <div class="p-4 flex justify-between items-center">
-                      <%= user.username %>
+                      <%= link_to user.username, user_path(user), class: "font-bold underline" %>
                       <%= button_to "Add Friend", user_friends_path(user_id: current_user.id, friend_id: user.id), 
                           method: :post, 
                           class: "add-friend-button" %>
@@ -54,10 +54,3 @@
      </div>
    </main>
 </body>
-  
-  
-
-
-
-
-
