@@ -55,3 +55,21 @@
   margin: 0.3rem;
   width: 50%;
 }
+
+.new-rating-submit-button {
+  display: block;
+  margin: 32px auto -7px auto;
+  padding: 12px;
+  width: 201px;
+  height: 48px; /* Increased height to prevent cutoff */
+  background-color: #3b82f6; /* bg-blue-500 */
+  color: #ffffff; /* text-white */
+  font-weight: bold; /* font-bold */
+  border: none; /* Remove border */
+  border-radius: 0.5rem; /* rounded-lg */
+  transition: background-color 0.3s ease-in-out; /* transition duration-300 ease-in-out */
+}
+
+.new-rating-submit-button:hover {
+  background-color: #1d4ed8; /* hover:bg-blue-700 */
+}
