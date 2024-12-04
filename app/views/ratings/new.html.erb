@@ -1,34 +1,22 @@
-<div class="container">
-  <% if @rating.errors.any? %>
-    <div class="row text-bg-warning" id="error_explanation">
-      <h2><%= pluralize(@rating.errors.count, "error") %> prevented this sight from being saved:</h2>
+<turbo-frame id="new_rating">
+  <div class="container_special">
+    <div class="max-w-md mx-auto">
+      <%= form_with(model: @rating, url: game_ratings_path(@game), local: true, class: "space-y-3") do |form| %>
+        <div>
+          <%= form.label :stars, "Rating", class: "block text-gray-700 font-bold mb-1" %>
+          <%= form.number_field :stars, min: 1, max: 5, class: "w-full p-2 border border-gray-300 rounded-lg" %>
+        </div>
+        
+        <div>
+          <%= form.label :text, "Your Review", class: "block text-gray-700 font-bold mb-1" %>
+          <%= form.text_area :text, rows: 3, class: "w-full p-2 border border-gray-300 rounded-lg" %>
+        </div>
+    
+        <div>
+          <%= form.button "Submit", type: "submit", class: "new-rating-submit-button" %>
+          <%= button_tag "Cancel", type: "button", class: "cancel-review-button", onclick: "window.location.href='#{game_path(@game)}'" %>
+        </div>
+      <% end %>
     </div>
-    <% @rating.errors.each do |error| %>
-      <div class="row text-bg-warning">
-        <div class="col-2"></div><div class="col-8"><%= error.full_message %></div>
-      </div>
-    <% end %>
-  <% end %>
-
-  <div class="row">
-    <h1>Create New Rating</h1>
   </div>
-
-  <%= form_with(model: @rating, url: game_ratings_path(@game), local: true) do |form| %>
-    <div class="field">
-      <%= form.label :Rating %>
-      <%= form.number_field :stars, min: 1, max: 5 %>
-    </div>
-  
-    <div class="field">
-      <%= form.label :text, "Your Review" %>
-      <%= form.text_area :text, rows: 4 %>
-    </div>
-  
-    <%= form.submit "Submit Review" %>
-  <% end %>
-
-  <%= button_to 'Back to Game', game_path(@game), method: :get, class: 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded' %>
-
-  
-</div>
+</turbo-frame>

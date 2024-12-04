@@ -8,8 +8,6 @@
 <!-- TEMPORARY BUTTON LOCATION -->
 <div><%= button_to "Back to Browse", games_path, method: :get, class: "back-button" %></div> 
 <div class="game-show max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-lg mt-10 mb-10">
-<h1 class="text-orange-500">   WE SHOULD USE JAVASCRIPT TO HAVE NEW RATING FORM POP UP OVER SHOW PAGE ONCE WE LEARN IT UNTIL THEN, WILL USE REDIRECT </h1>
-
 
 <h1 class="text-3xl font-bold text-gray-800 mb-4 text-center"><%= @game.name %></h1>
   
@@ -19,15 +17,14 @@
   <p class="text-lg text-gray-700 font-semibold">Average Rating: <%= @game.avg_rating %></p>
   <p class="text-md text-gray-500">Number of Players: <%= @game.num_players %></p>
 
-  <%= button_to "New Rating", new_game_rating_path(@game), method: :get, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg my-6 transition duration-300 ease-in-out" %>
+  <%= button_to "New Rating", new_game_rating_path(@game), method: :get, remote: true, form: { data: { turbo_frame: 'new_rating' } }, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg my-6 transition duration-300 ease-in-out" %>
 </div>
   
-  <img src="<%= @game.image %>" alt="<%= @game.name %>" class="w-64 mx-auto rounded-lg shadow-md mb-6" />
-
-  <!-- Display top ratings -->
+<img src="<%= @game.image %>" alt="<%= @game.name %>" class="w-64 mx-auto rounded-lg shadow-md mb-6" />
+<turbo-frame id="new_rating"> </turbo-frame>
+<!-- Display top ratings -->
   <% top_ratings = @game.top_ratings(5) %>
   <% ratings_count = top_ratings.size %>
-
   <% if ratings_count > 0 %>
     <h2 class="text-2xl font-semibold text-gray-800 mb-4 text-center">Top <%= ratings_count %> rating<%= "s" if ratings_count > 1 %></h2>
     <div class="top-ratings space-y-4 text-center">
@@ -43,7 +40,5 @@
     </div>
   <% else %>
     <p class="text-lg text-gray-600 text-center mt-12">No ratings yet. Be the first to leave a review!</p>
-    <%= button_to "New Rating", new_game_rating_path(@game), method: :get, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded-lg mt-4 transition duration-300 ease-in-out" %>
   <% end %>
-
 </div>
