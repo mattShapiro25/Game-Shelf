@@ -25,9 +25,9 @@
       
       <div class="inner-div">
         <%= turbo_frame_tag 'search-results' do %>
-        <div class="flex items-center justify-center mb-5 relative">
-          <%= button_to "Back", user_friends_path(@user), method: :get, class: "back-button absolute left-0 mt-3", data: { turbo_frame: "_top" } %>
+        <div class="flex items-center justify-center mb-5 relative pl-12">
           <h1 class="inner-h1">Results</h1>
+          <%= button_to "Back", user_friends_path(@user), method: :get, class: "back-button py-2 absolute left-0 top-3/4 transform -translate-y-1/2 p-2", data: { turbo_frame: "_top" } %>
         </div>
         <div class="text-center mb-5">
           <% if @users.any? %>

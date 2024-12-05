@@ -131,6 +131,28 @@ input[type="password"]:focus {
   background-color: #1d4ed8; /* hover:bg-blue-700 */
 }
 
+.new-friend-submit-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px auto; /* Consistent horizontal centering */
+  padding: 6px 12px; /* Adjust padding for balanced spacing */
+  width: auto; /* Let button size naturally */
+  max-width: 200px; /* Optional: Limit button width */
+  height: 50px; /* Ensure height consistency */
+  background-color: #3b82f6;
+  color: #ffffff;
+  font-weight: bold;
+  border: none;
+  border-radius: 0.375rem;
+  box-sizing: border-box; /* Ensure padding doesn't affect width/height */
+  transition: background-color 0.3s ease-in-out;
+  cursor: pointer;
+}
+.new-friend-submit-button:hover {
+  background-color: #1d4ed8;
+}
+
 .cancel-review-button {
   display: flex; /* Flex to center content */
   justify-content: center; /* Center text horizontally */
