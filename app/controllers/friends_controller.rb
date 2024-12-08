@@ -45,7 +45,11 @@ class FriendsController < ApplicationController
 
 	def search
     if params[:query].present?
-      @users = User.where('username LIKE ?', "%#{params[:query]}%")
+      #@users = User.where('username LIKE ?', "%#{params[:query]}%")
+
+			friend_ids = Friend.where('user_id1 = ? OR user_id2 = ?', current_user.id, current_user.id).pluck(:user_id1, :user_id2).flatten.uniq.reject { |id| id == current_user.id }
+
+			@users = User.where('username LIKE ?', "%#{params[:query]}%").where.not(id: friend_ids)
     else
       @users = User.none
     end
