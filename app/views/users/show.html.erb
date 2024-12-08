@@ -37,6 +37,19 @@
       <p class="info-line">Email: <%= @user.email %></p>
       <p class="info-line">Number of Games Rated: <%= @games_played_count %></p>
     </section>
+  <% else %>
+    <!-- Add Friend Button -->
+    <div style="text-align: right; margin-right: 20px;">
+    <% unless @user == current_user || current_user.friends.include?(@user) %>
+    <%= button_to "Add Friend", user_friends_path(user_id: current_user.id, friend_id: @user.id), method: :post, class: "bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded" %>
+    </div>
+  <% end %>
+    <!-- Remove Friend Button -->
+    <div style="text-align: right; margin-right: 20px;">
+    <% if current_user.friends.include?(@user) %>
+    <%= button_to "Remove Friend", user_friend_path(user_id: current_user.id, id: @user.id), method: :delete, class: "bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded" %>
+    </div>
+  <% end %>
   <% end %>
 
   <% if @user == current_user %>
@@ -102,7 +115,6 @@
       <a href="<%= user_friends_path(@user) %>">Connect with More Friends</a>
     </div>
   <% end %>
-
 
 
 </body>
