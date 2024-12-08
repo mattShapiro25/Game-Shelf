@@ -33,14 +33,14 @@ class FriendsController < ApplicationController
 		Friend.create_bidirectional_friend(@user, @friend)
 
     flash[:notice] = "Friend added successfully!"
-    redirect_to user_path(@friend)
+		redirect_to request.referer || user_friends_path(current_user)
 	end
 
 	def destroy
 		@friend = @user.friends.find(params[:id])
 		Friend.destroy_bidirectional_friend(current_user, @friend)
 		flash[:notice] = "Friend removed successfully"
-		redirect_to user_path(@friend)
+		redirect_to request.referer || user_friends_path(current_user)
 	end
 
 	def search
