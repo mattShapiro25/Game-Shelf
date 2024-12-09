@@ -33,7 +33,7 @@
           <p class="text-lg font-semibold text-gray-800"><strong>Rating:</strong> <%= rating.stars %> stars</p>
           <p class="text-gray-600 my-2"><%= rating.text %></p>
           <p class="text-sm text-gray-500">
-            <small>by <%= rating.user.username %> on <%= rating.created_at.strftime("%B %d, %Y") %></small>
+            <small>by <%= link_to rating.user.username, user_path(rating.user), class: "font-bold underline" %> on <%= rating.created_at.strftime("%B %d, %Y") %></small>
           </p>
         </div>
       <% end %>

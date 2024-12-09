@@ -5,59 +5,48 @@
   <%= stylesheet_link_tag 'application', 'friend.tailwind.css', media: 'all' %>
 </head> 
 
-  <header class="app-header">
-   
-    <div class="logo flex-shrink-0 z-10">
-      <a href="<%= home_index_path %>" class="flex items-center">
-        <%= image_tag 'logo.png', alt: 'Logo', class: "h-auto w-auto" %>
-      </a>
-    </div>
-  
-    <h1 class="app-header-title">Search Results</h1>
-  </header>
-  
-  <div class="relative">
-    <%= button_to "Back to Search", new_user_friend_path, method: :get, class: "back-button" %>
+<header class="app-header">
+  <div class="logo flex-shrink-0 z-10">
+    <a href="<%= home_index_path %>" class="flex items-center">
+      <%= image_tag 'logo.png', alt: 'Logo', class: "h-auto w-auto" %>
+    </a>
   </div>
-  
-  <body class="outer-body">
-    <main class="inner-main">
-      
-      <div class="inner-div">
-        <%= turbo_frame_tag 'search-results' do %>
-        <div class="flex items-center justify-center mb-5 relative">
-          <%= button_to "Back", user_friends_path(@user), method: :get, class: "back-button absolute left-0 mt-3", data: { turbo_frame: "_top" } %>
-          <h1 class="inner-h1">Results</h1>
-        </div>
-        <div class="text-center mb-5">
-          <% if @users.any? %>
-            <ul class="space-y-4 mb-8"> 
+  <h1 class="app-header-title">Search Results</h1>
+</header>
+
+<div class="relative">
+  <%= button_to "Back to Search", new_user_friend_path, method: :get, class: "back-button" %>
+</div>
+
+<body class="outer-body">
+  <main class="inner-main">
+    <div class="inner-div">
+      <%= turbo_frame_tag 'search-results' do %>
+      <div class="flex items-center justify-center mb-5 relative">
+        <%= button_to "Back", user_friends_path(@user), method: :get, class: "back-button absolute left-0 mt-3", data: { turbo_frame: "_top" } %>
+      </div>
+      <div style="height: 60px;"></div>
+      <div class="text-center mb-5">
+        <% if @users.any? %>
+          <div class="flex flex-col items-center mb-8">
+            <ul class="space-y-4 w-full max-w-md"> 
               <% @users.each do |user| %>
                 <% if current_user != user %> 
                   <li class="add-friend-outer">
                     <div class="p-4 flex justify-between items-center">
-                      <%= user.username %>
-                      <%= button_to "Add Friend", user_friends_path(user_id: current_user.id, friend_id: user.id), 
-                          method: :post, 
-                          class: "add-friend-button" %>
+                      <%= link_to user.username, user_path(user), class: "font-bold underline", data: { turbo: false } %>
+                      <%= button_to "Add Friend", user_friends_path(current_user, friend_id: user.id), method: :post, data: { turbo: false }, class: "add-friend-button px-3 py-1 bg-blue-500 text-white rounded" %>
                     </div>
                   </li>
                 <% end %>
               <% end %>
             </ul>
-          <% else %>
-            <p>No users found matching your search.</p>
-          <% end %>
-        </div>
+          </div>
+        <% else %>
+          <p>No users found matching your search.</p>
         <% end %>
-       </div>
-     </div>
-   </main>
+      </div>
+      <% end %>
+    </div>
+  </main>
 </body>
-  
-  
-
-
-
-
-

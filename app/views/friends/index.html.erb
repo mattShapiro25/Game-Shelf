@@ -34,7 +34,7 @@
         <% @friends.each do |friend| %>
           <li class="bg-gray-50 hover:bg-gray-100 transition duration-150 ease-in-out rounded-lg shadow-sm overflow-hidden">
             <div class="p-4 flex justify-between items-center">
-              <%= link_to user_path(friend), class: "text-lg font-semibold text-blue-600 hover:text-blue-800" do %>
+              <%= link_to user_path(friend), class: "text-lg font-semibold text-blue-600 hover:text-blue-800", data: { turbo_frame: 'user-frame' } do %>
                 <%= friend.username %>
               <% end %>
               <%= button_to "Remove Friend", user_friend_path(user_id: current_user.id, id: friend.id), 
@@ -45,13 +45,8 @@
           </li>
         <% end %>
       </ul>
-      
-      
     </div>
   </main>
-  
-
-
 </body>
 
 
