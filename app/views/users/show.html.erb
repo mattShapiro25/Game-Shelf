@@ -63,7 +63,11 @@
           <a href="<%= game_path(game) %>" class="game-card">
           <img src="<%= game.image %>" alt="<%= game.name %>" class="game-image">
           <h2 class="game-title"><%= game.name %></h2>
-          <p class="game-rating">Your Rating: <%= game.user_rating %></p>
+          <% if @user == current_user%>
+            <p class="game-rating">Your Rating: <%= game.user_rating %></p>
+          <% else%>
+            <p class="game-rating"><%= @user.username.capitalize %>'s Rating: <%= game.user_rating %></p>
+          <% end %>
           </a>
       <% end %>
     <% elsif @user == current_user%>
