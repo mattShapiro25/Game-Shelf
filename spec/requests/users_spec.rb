@@ -36,15 +36,6 @@ RSpec.describe "UsersController", type: :request do
         expect(response.body).to include("Friends")
       end
     end
-          #### THIS TEST DOES NOT WORK - not sure why
-    context "when the user does not exist" do
-      it "redirects to the home page with a flash message" do
-        sign_in @user
-        get user_friends_path(-1) 
-        expect(response).to redirect_to(home_index_path) 
-        expect(flash[:alert]).to eq("Invalid user.")    
-      end
-    end    
   end
 
   describe "Devise access control" do

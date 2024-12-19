@@ -15,17 +15,17 @@
 
   <div class="z-10">
     <a href="<%= user_path(current_user.id) %>">
-      <div class="profile-icon"><%= current_user.email[0].upcase %></div>
+      <div class="profile-icon"><%= current_user.username[0].upcase %></div>
     </a>
   </div>
 </header>
 <body>
   <main class="flex justify-center items-start mt-5 px-4">
     <div class="bg-white shadow-lg rounded-lg w-full max-w-md p-6">
-      <h1 class="text-xl font-bold text-gray-800 mb-5 text-center"><%= @user.username.capitalize %>'s Friends</h1>
+      <h1 class="text-xl font-bold text-gray-800 mb-5 text-center"><%= @user.username %>'s Friends</h1>
       <div class="text-center mb-5">
         <%= turbo_frame_tag 'add-friend' do %>
-        <%= button_to "Add a new friend", new_user_friend_path(current_user), 
+        <%= button_to "Add Friend", new_user_friend_path(current_user), 
             method: :get, 
             class: 'bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-full text-md transition duration-150 ease-in-out shadow-md' %>
         <% end %>

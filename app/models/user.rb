@@ -12,7 +12,7 @@ class User < ApplicationRecord
   has_many :friends, through: :friendships, source: :user2
 
 
-  # validations; not needed now
+  # validations
   # validates :ratings, presence: true
   # validates :rated_games, presence: true
   # validates :friendships, presence: true
