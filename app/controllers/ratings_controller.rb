@@ -16,7 +16,13 @@ class RatingsController < ApplicationController
     @rating = @user.ratings.new(rating_params)
     @rating.game = @game
     
-    if @rating.save 
+    if @rating.save
+      # update rating 
+      @game.num_ratings += 1
+      @game.num_players += 1
+      @game.avg_rating = (((@game.avg_rating * (@game.num_ratings - 1)) + @rating.stars) / @game.num_ratings).round(2)
+      @game.save
+
       redirect_to game_path(@game), notice: "Rating created successfully"
     else
       flash[:alert] = 'Rating could not be created'
