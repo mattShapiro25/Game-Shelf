@@ -95,8 +95,12 @@
               <%= friend.username[0].upcase %> 
             </div>
             <div class="friend-info">
-              <h3><%= friend.username %></h3>
-              <p><%= friend.number_of_ratings %> ratings</p>
+              <h3><%=friend.username%></h3>
+              <% if friend.number_of_ratings.nil? %>
+                <p>0 ratings </p>
+              <% else %>
+                <p><%=friend.number_of_ratings%> ratings</p>
+              <% end %>
             </div>
           </div>
         </a>
