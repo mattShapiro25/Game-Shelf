@@ -8,9 +8,10 @@ class FriendsController < ApplicationController
 		@friends = @user.friends
 	end
 
-	def show 
-		@friend = @user.friends.find(params[:id])
-	end
+	#	NOT
+	# def show 
+	# 	@friend = @user.friends.find(params[:id])
+	# end
 
 	def new
 	 @friend = Friend.new
@@ -22,12 +23,12 @@ class FriendsController < ApplicationController
 
 		if @friend == current_user
       flash[:alert] = "You cannot add yourself as a friend."
-      redirect_to new_user_friend_path(current_user) and return
+      redirect_to user_friends_path(current_user) and return
     end
 
     if current_user.friends.include?(@friend)
       flash[:alert] = "You are already friends with this user."
-      redirect_to new_user_friend_path(current_user) and return
+      redirect_to user_friends_path(current_user) and return
     end
 
 		Friend.create_bidirectional_friend(@user, @friend)
@@ -56,14 +57,14 @@ class FriendsController < ApplicationController
 
 private 
   
-  def set_user
-  	@user = current_user
+	def set_user
+  		@user = current_user
 		redirect_to new_user_session_path unless @user
 	end
 
-	def handle_bad_user_id
-    flash[:alert] = 'Invalid user.'
-    redirect_to home_index_path
-  end
-  
+	#	Not needed
+	# def handle_bad_user_id
+    # 	flash[:alert] = 'Invalid user.'
+    # 	redirect_to home_index_path
+	# end
 end

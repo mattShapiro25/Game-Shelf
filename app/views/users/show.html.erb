@@ -13,7 +13,7 @@
     </div>
     <% if @user != current_user %>
       <a href="<%= user_path(current_user.id) %>">
-        <div class="profile-icon"><%= current_user.email[0].upcase %></div>
+        <div class="profile-icon"><%= current_user.username[0].upcase %></div>
       </a>
     <% end %>
   </header>
@@ -21,10 +21,10 @@
   <% if @user == current_user %>
     <section class="profile-head">
       <a href="<%= user_path(@user.id) %>">
-        <div class="center-profile-icon"><%= @user.email[0].upcase %></div>
+        <div class="center-profile-icon"><%= @user.username[0].upcase %></div>
       </a>
       <div class="right-profile-head">
-        <h1 class="profile-text"><%= current_user.email.split('@').first.capitalize %></h1>
+        <h1 class="profile-text"><%= current_user.username %></h1>
         <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "logout" %>
       </div>
     </section>
@@ -55,7 +55,7 @@
   <% if @user == current_user %>
     <h2 class="section-heading">Your Games</h2>
   <% else %>
-    <h2 class="section-heading"><%= @user.username.capitalize %>'s Games</h2> 
+    <h2 class="section-heading"><%= @user.username %>'s Games</h2> 
   <% end %>
   <section class="games" id="games-section">
     <% if @games_with_ratings.length > 0 %>
@@ -66,7 +66,7 @@
           <% if @user == current_user%>
             <p class="game-rating">Your Rating: <%= game.user_rating %></p>
           <% else%>
-            <p class="game-rating"><%= @user.username.capitalize %>'s Rating: <%= game.user_rating %></p>
+            <p class="game-rating"><%= @user.username %>'s Rating: <%= game.user_rating %></p>
           <% end %>
           </a>
       <% end %>
@@ -76,14 +76,14 @@
           <a href="<%= games_path %>"><p>Browse Games</a>
       </div>
     <% else %>
-        <div class="no-friends"><%= @user.username.capitalize%> hasn't rated any games.</div>
+        <div class="no-friends"><%= @user.username%> hasn't rated any games.</div>
     <% end %>
   </section>
 
   <% if @user == current_user %>
     <h2 class="section-heading">Your Friends</h2>
   <% else %>
-    <h2 class="section-heading"><%= @user.username.capitalize %>'s Friends</h2> 
+    <h2 class="section-heading"><%= @user.username %>'s Friends</h2> 
   <% end %>
 
   <section class="friends-list">
@@ -92,11 +92,15 @@
         <a href="<%= user_path(friend) %>" class="friend-link">
           <div class="friend-card">
             <div class="profile-circle">
-              <%= friend.email[0].upcase %> 
+              <%= friend.username[0].upcase %> 
             </div>
             <div class="friend-info">
-              <h3><%= friend.username.capitalize %></h3>
-              <p>Number of Ratings: <%= friend.number_of_ratings %></p>
+              <h3><%=friend.username%></h3>
+              <% if friend.number_of_ratings.nil? %>
+                <p>0 ratings </p>
+              <% else %>
+                <p><%=friend.number_of_ratings%> ratings</p>
+              <% end %>
             </div>
           </div>
         </a>
@@ -107,7 +111,7 @@
           <a href="<%= user_friends_path(current_user) %>"><p>Connect with other Members</a>
       </div>
     <% else %>
-      <div class="no-friends"><%= @user.username.capitalize%> has no friends</div>
+      <div class="no-friends"><%= @user.username%> has no friends</div>
     <% end %>
   </section>
   <% if @user == current_user && @friends.length > 0 %>

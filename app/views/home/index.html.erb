@@ -13,11 +13,11 @@
       </a>
     </div>
     <a href="<%= user_path(current_user.id) %>">
-      <div class="profile-icon"><%= current_user.email[0].upcase %></div>
+      <div class="profile-icon"><%= current_user.username[0].upcase %></div>
     </a>
   </header>
   <main class="content">
-  <h1 class="welcome-text">Welcome <%= current_user.email.split('@').first.capitalize %></h1>
+  <h1 class="welcome-text">Welcome, <%= current_user.username %>!</h1>
   <h2 class="section-heading">Popular Games</h2>
     <section class="games">
       <% @games.each do |game| %>
@@ -40,12 +40,16 @@
         <div class="friend-card">
           
             <div class="profile-circle">
-              <%= friend.email[0].upcase %> 
+              <%= friend.username[0].upcase %> 
             </div>
           
           <div class="friend-info">
-            <h3><%= friend.username %></h3>
-            <p>Number of Ratings: <%= friend.number_of_ratings %></p>
+            <h3><%=friend.username %></h3>
+            <% if friend.number_of_ratings.nil? %>
+                <p>0 ratings</p>
+              <% else %>
+                <p><%=friend.number_of_ratings%> ratings</p>
+              <% end %>
           </div>
         </div>
         </a>

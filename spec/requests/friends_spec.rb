@@ -8,6 +8,18 @@ RSpec.describe "Friends", type: :request do
     sign_in @user
   end
 
+  # tests for DESTROY
+  describe "DELETE /users/:user_id/friends/:id (DESTROY)" do
+    it "destroys a user" do 
+      Friend.create_bidirectional_friend(@user, @other_user)
+      delete user_friend_path(@user, @other_user)
+      
+      expect(response).to redirect_to(user_friends_path(@user))
+      follow_redirect!
+      expect(response.body).to include("Friend removed successfully")
+    end
+  end
+
   #Tests for INDEX
   describe "GET /users/:user_id/friends (INDEX)" do
     it "lists the user's friends" do
@@ -18,31 +30,12 @@ RSpec.describe "Friends", type: :request do
     end
   end
 
-#Tests for SHOW
-  describe "GET /users/:user_id/friends/:id (SHOW)" do
-    it "shows the friend's details" do
-      Friend.create_bidirectional_friend(@user, @friend)  # Add friend
-      get user_friend_path(@user, @friend)
-
-      expect(response).to have_http_status(:ok)
-      expect(response.body).to include(@friend.username)  # Assuming the username is displayed on the show page
-    end
-
-    it "redirects to home page with flash alert when friend is not found" do
-      get user_friend_path(@user, id: -1)
-
-      expect(response).to redirect_to(home_index_path)
-      follow_redirect!
-      expect(response.body).to include("Invalid user.")
-    end
-  end
-
 #Tests for NEW
   describe "GET /users/:user_id/friends/new (NEW)" do
     it "renders the new friend form" do
       get new_user_friend_path(@user)
       expect(response).to have_http_status(:ok)
-      expect(response.body).to include("Would you like to add a friend?") 
+      expect(response.body).to include("Add New Friend") 
     end
   end
 
@@ -111,6 +104,5 @@ RSpec.describe "Friends", type: :request do
       end
     end
   end
-
 
 end

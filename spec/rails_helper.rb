@@ -1,6 +1,10 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'simplecov'
-SimpleCov.start 'rails'
+SimpleCov.start 'rails' do
+  add_filter '/channels/'
+  add_filter '/mailers/'
+  add_filter '/jobs/'
+end
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
@@ -12,11 +16,14 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 
-#To ensure that devise works in rspec tests
+#To ensure that devise & warden work in rspec tests
 RSpec.configure do |config|
   # For Devise test helpers in request specs
   config.include Devise::Test::IntegrationHelpers, type: :request
-end
+  config.include Devise::Test::ControllerHelpers, type: :controller
+end 
+
+
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
