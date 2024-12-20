@@ -8,6 +8,18 @@ RSpec.describe "Friends", type: :request do
     sign_in @user
   end
 
+  # tests for DESTROY
+  describe "DELETE /users/:user_id/friends/:id (DESTROY)" do
+    it "destroys a user" do 
+      Friend.create_bidirectional_friend(@user, @other_user)
+      delete user_friend_path(@user, @other_user)
+      
+      expect(response).to redirect_to(user_friends_path(@user))
+      follow_redirect!
+      expect(response.body).to include("Friend removed successfully")
+    end
+  end
+
   #Tests for INDEX
   describe "GET /users/:user_id/friends (INDEX)" do
     it "lists the user's friends" do
@@ -92,6 +104,5 @@ RSpec.describe "Friends", type: :request do
       end
     end
   end
-
 
 end
