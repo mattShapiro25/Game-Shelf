@@ -19,45 +19,42 @@ games.each do |game|
   )
 end
 
-# Seed sample User
-user1 = User.create!(
-  username: 'testuser',
-  email: 'testuser@example.com',
-  password: 'password123',
-  password_confirmation: 'password123',
-  number_of_ratings: 2
-)
+# Load users
+users_file = File.read(Rails.root.join('db', 'seeds', 'users.json'))
+users_data = JSON.parse(users_file)
 
-user2 = User.create!(
-  username: 'testuser2',
-  email: 'testuser2@example.com',
-  password: 'password123',
-  password_confirmation: 'password123',
-  number_of_ratings: 0
-)
-user3 = User.create!(
-  username: 'testuser3',
-  email: 'testuser3@example.com',
-  password: 'password123',
-  password_confirmation: 'password123',
-  number_of_ratings: 0
-)
+# Create users
+users_data.each do |user_data|
+  User.create!(
+    username: user_data['username'],
+    email: user_data['email'],
+    password: user_data['password'],
+    password_confirmation: user_data['password'],
+    number_of_ratings: user_data['number_of_ratings']
+  )
+end
 
-#Seed sample review
-rating1 = Rating.create!(
-  user_id: 1,
-  game_id: 2,
-  stars: 4,
-  text: "This game is good and this is a test review"
-)
-rating2 = Rating.create!(
-  user_id: 1,
-  game_id: 2,
-  stars: 1,
-  text: "This is my second review - test review"
-)
+# Load ratings
+ratings_file = File.read(Rails.root.join('db', 'seeds', 'ratings.json'))
+ratings_data = JSON.parse(ratings_file)
 
-#Seed Sample friend
-Friend.create_bidirectional_friend(user1, user2)
-Friend.create_bidirectional_friend(user1, user3)
+# Create ratings
+ratings_data.each do |rating_data|
+  Rating.create!(
+    user_id: rating_data['user_id'],
+    game_id: rating_data['game_id'],
+    stars: rating_data['stars'],
+    text: rating_data['text']
+  )
+end
 
+friends_file = File.read(Rails.root.join('db', 'seeds', 'friends.json'))
+friends_data = JSON.parse(friends_file)
+friends_data.each do |friendship|
+  Friend.create!(
+    user_id1: friendship['user_id1'],
+    user_id2: friendship['user_id2']
+  )
+end
+
+puts("Database seeded sucessfully")
