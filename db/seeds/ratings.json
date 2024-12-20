@@ -1,0 +1,83 @@
+[
+  { "user_id": 1, "game_id": 1, "stars": 4, "text": "Exciting game with great replay value." },
+  { "user_id": 1, "game_id": 2, "stars": 5, "text": "Loved the storyline and characters." },
+  { "user_id": 1, "game_id": 3, "stars": 3, "text": "Decent game but lacked depth." },
+
+  { "user_id": 2, "game_id": 1, "stars": 4, "text": "Very engaging and fun to play." },
+  { "user_id": 2, "game_id": 3, "stars": 3, "text": "Good graphics but repetitive gameplay." },
+  { "user_id": 2, "game_id": 5, "stars": 2, "text": "Expected more from the sequel." },
+  { "user_id": 2, "game_id": 2, "stars": 4, "text": "Excellent for cooperative gameplay." },
+
+  { "user_id": 3, "game_id": 2, "stars": 5, "text": "An absolute masterpiece!" },
+  { "user_id": 3, "game_id": 5, "stars": 4, "text": "Solid mechanics, enjoyable experience." },
+  { "user_id": 3, "game_id": 4, "stars": 3, "text": "Average game, nothing special." },
+  { "user_id": 3, "game_id": 3, "stars": 5, "text": "Fantastic gameplay and visuals!" },
+  { "user_id": 3, "game_id": 1, "stars": 2, "text": "Disappointing, felt rushed." },
+
+  { "user_id": 4, "game_id": 8, "stars": 4, "text": "Enjoyable with a unique twist." },
+  { "user_id": 4, "game_id": 2, "stars": 3, "text": "Good for a casual experience." },
+
+  { "user_id": 5, "game_id": 5, "stars": 5, "text": "Exceeded all expectations!" },
+
+  { "user_id": 6, "game_id": 4, "stars": 4, "text": "Very enjoyable with friends." },
+  { "user_id": 6, "game_id": 5, "stars": 3, "text": "Average, could have been better." },
+  { "user_id": 6, "game_id": 6, "stars": 5, "text": "Perfect mix of action and strategy." },
+
+  { "user_id": 7, "game_id": 7, "stars": 5, "text": "Absolutely loved this game!" },
+  { "user_id": 7, "game_id": 8, "stars": 4, "text": "Good pacing and great design." },
+  { "user_id": 7, "game_id": 3, "stars": 3, "text": "Decent mechanics, but repetitive." },
+  { "user_id": 7, "game_id": 2, "stars": 5, "text": "Innovative and fun!" },
+  { "user_id": 7, "game_id": 1, "stars": 4, "text": "Well-balanced gameplay." },
+
+  { "user_id": 8, "game_id": 6, "stars": 4, "text": "Engaging story and characters." },
+  { "user_id": 8, "game_id": 4, "stars": 5, "text": "Top-tier graphics and gameplay." },
+  { "user_id": 8, "game_id": 3, "stars": 3, "text": "Could use more content." },
+  { "user_id": 8, "game_id": 8, "stars": 4, "text": "Fun, but short." },
+
+  { "user_id": 9, "game_id": 7, "stars": 3, "text": "Great multiplayer experience." },
+  { "user_id": 9, "game_id": 6, "stars": 2, "text": "Unpolished and buggy." },
+
+  { "user_id": 10, "game_id": 8, "stars": 4, "text": "Thrilling and suspenseful." },
+  { "user_id": 10, "game_id": 7, "stars": 3, "text": "Good, but needed more depth." },
+  { "user_id": 10, "game_id": 3, "stars": 5, "text": "A must-play for fans of the genre." },
+
+  { "user_id": 11, "game_id": 1, "stars": 5, "text": "One of the best games I’ve played!" },
+  { "user_id": 11, "game_id": 2, "stars": 4, "text": "Excellent pacing and variety." },
+  { "user_id": 11, "game_id": 3, "stars": 3, "text": "A bit overrated, but still fun." },
+  { "user_id": 11, "game_id": 4, "stars": 5, "text": "Stunning visuals and sound." },
+
+  { "user_id": 12, "game_id": 3, "stars": 2, "text": "Not worth the price." },
+  { "user_id": 12, "game_id": 6, "stars": 3, "text": "Had potential, but fell short." },
+
+  { "user_id": 13, "game_id": 7, "stars": 5, "text": "Outstanding gameplay." },
+  { "user_id": 13, "game_id": 8, "stars": 4, "text": "Fun and engaging." },
+  { "user_id": 13, "game_id": 3, "stars": 3, "text": "Could use more content." },
+  { "user_id": 13, "game_id": 4, "stars": 5, "text": "A classic!" },
+  { "user_id": 13, "game_id": 1, "stars": 4, "text": "Solid experience." },
+
+  { "user_id": 14, "game_id": 2, "stars": 3, "text": "Decent, but nothing special." },
+
+  { "user_id": 15, "game_id": 3, "stars": 4, "text": "Highly recommend!" },
+  { "user_id": 15, "game_id": 4, "stars": 5, "text": "Fun with friends." },
+  { "user_id": 15, "game_id": 1, "stars": 3, "text": "Could be better." },
+
+  { "user_id": 16, "game_id": 2, "stars": 5, "text": "Phenomenal game design." },
+  { "user_id": 16, "game_id": 6, "stars": 4, "text": "Challenging and rewarding." },
+  { "user_id": 16, "game_id": 8, "stars": 3, "text": "Good, but needs updates." },
+  { "user_id": 16, "game_id": 4, "stars": 5, "text": "Exceeded all expectations!" },
+
+  { "user_id": 17, "game_id": 5, "stars": 4, "text": "Entertaining and addictive." },
+  { "user_id": 17, "game_id": 3, "stars": 3, "text": "Fun for a few hours." },
+
+  { "user_id": 18, "game_id": 5, "stars": 5, "text": "Absolutely brilliant!" },
+  { "user_id": 18, "game_id": 2, "stars": 4, "text": "Great attention to detail." },
+  { "user_id": 18, "game_id": 7, "stars": 3, "text": "Decent experience overall." },
+
+  { "user_id": 19, "game_id": 7, "stars": 3, "text": "Short but enjoyable." },
+
+  { "user_id": 20, "game_id": 6, "stars": 5, "text": "Game of the year!" },
+  { "user_id": 20, "game_id": 7, "stars": 4, "text": "Excellent graphics." },
+  { "user_id": 20, "game_id": 8, "stars": 5, "text": "Immersive and exciting." },
+  { "user_id": 20, "game_id": 5, "stars": 4, "text": "Strong mechanics and story." },
+  { "user_id": 20, "game_id": 1, "stars": 3, "text": "Good, but too short." }
+]

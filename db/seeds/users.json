@@ -1,0 +1,122 @@
+[
+  {
+    "username": "JohnSmith",
+    "email": "john.smith@example.com",
+    "password": "securepassword",
+    "number_of_ratings": 3
+  },
+  {
+    "username": "JaneDoe",
+    "email": "jane.doe@example.com",
+    "password": "securepassword",
+    "number_of_ratings": 4
+  },
+  {
+    "username": "AliceJohnson",
+    "email": "alice.johnson@example.com",
+    "password": "securepassword",
+    "number_of_ratings": 5
+  },
+  {
+    "username": "RobertBrown",
+    "email": "robert.brown@example.com",
+    "password": "securepassword",
+    "number_of_ratings": 2
+  },
+  {
+    "username": "EmilyDavis",
+    "email": "emily.davis@example.com",
+    "password": "securepassword",
+    "number_of_ratings": 1
+  },
+  {
+    "username": "MichaelTaylor",
+    "email": "michael.taylor@example.com",
+    "password": "securepassword",
+    "number_of_ratings": 3
+  },
+  {
+    "username": "SophiaMartinez",
+    "email": "sophia.martinez@example.com",
+    "password": "securepassword",
+    "number_of_ratings": 5
+  },
+  {
+    "username": "JamesAnderson",
+    "email": "james.anderson@example.com",
+    "password": "securepassword",
+    "number_of_ratings": 4
+  },
+  {
+    "username": "OliviaWilson",
+    "email": "olivia.wilson@example.com",
+    "password": "securepassword",
+    "number_of_ratings": 2
+  },
+  {
+    "username": "WilliamGarcia",
+    "email": "william.garcia@example.com",
+    "password": "securepassword",
+    "number_of_ratings": 3
+  },
+  {
+    "username": "MiaThomas",
+    "email": "mia.thomas@example.com",
+    "password": "securepassword",
+    "number_of_ratings": 4
+  },
+  {
+    "username": "LucasMoore",
+    "email": "lucas.moore@example.com",
+    "password": "securepassword",
+    "number_of_ratings": 2
+  },
+  {
+    "username": "CharlotteHall",
+    "email": "charlotte.hall@example.com",
+    "password": "securepassword",
+    "number_of_ratings": 5
+  },
+  {
+    "username": "LiamAllen",
+    "email": "liam.allen@example.com",
+    "password": "securepassword",
+    "number_of_ratings": 1
+  },
+  {
+    "username": "AvaYoung",
+    "email": "ava.young@example.com",
+    "password": "securepassword",
+    "number_of_ratings": 3
+  },
+  {
+    "username": "BenjaminKing",
+    "email": "benjamin.king@example.com",
+    "password": "securepassword",
+    "number_of_ratings": 4
+  },
+  {
+    "username": "IsabellaScott",
+    "email": "isabella.scott@example.com",
+    "password": "securepassword",
+    "number_of_ratings": 2
+  },
+  {
+    "username": "EthanHarris",
+    "email": "ethan.harris@example.com",
+    "password": "securepassword",
+    "number_of_ratings": 3
+  },
+  {
+    "username": "AmeliaClark",
+    "email": "amelia.clark@example.com",
+    "password": "securepassword",
+    "number_of_ratings": 1
+  },
+  {
+    "username": "NoahLewis",
+    "email": "noah.lewis@example.com",
+    "password": "securepassword",
+    "number_of_ratings": 5
+  }
+]
